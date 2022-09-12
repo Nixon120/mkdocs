@@ -6,6 +6,13 @@ pipeline {
     CREDENTIALS_ID = 'gke'
     dockerImage = ''
   }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/anishnath/mkdocs.git'
+      }
+    }
     stage('Building image') {
       steps{
         script {
@@ -13,6 +20,16 @@ pipeline {
         }
       }
     }
+
+    stage('Test Mkdocs' ) {
+                agent {
+                docker { image 'anishnath/mkdocs:$BUILD_NUMBER' }
+            }
+            steps {
+                sh 'mkdocs --version'
+            }
+        }
+
 
     stage('Deploy Image') {
       steps{
@@ -29,4 +46,4 @@ pipeline {
       }
     }
   }
-
+}
