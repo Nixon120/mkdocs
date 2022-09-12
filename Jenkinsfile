@@ -1,7 +1,10 @@
 pipeline {
   environment {
-    registry = "anishnath/mkdocs"
-    registryCredential = 'docker-creds'
+    PROJECT_ID = 'beaming-force-358817'
+    CLUSTER_NAME = 'gke'
+    LOCATION = 'us-central1'
+    registry = "nixon/mkdocs"
+    registryCredential = 'gke'
     dockerImage = ''
   }
   agent any
