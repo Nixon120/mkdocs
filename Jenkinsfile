@@ -1,7 +1,6 @@
 pipeline {
   environment {
     PROJECT_ID = 'beaming-force-358817'
-    CLUSTER_NAME = 'gke'
     LOCATION = 'us-central1'
     registry = "nixon/mkdocs"
     registryCredential = 'gke'
