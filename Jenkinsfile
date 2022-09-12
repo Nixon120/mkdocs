@@ -3,7 +3,7 @@ pipeline {
     PROJECT_ID = 'beaming-force-358817'
     LOCATION = 'us-central1'
     registry = "gcr.io/beaming-force-358817/gke-gcr"
-    CREDENTIALS_ID = 'gke'
+    CREDENTIALS_ID = 'dockerhub'
     dockerImage = ''
   }
   agent any
