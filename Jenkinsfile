@@ -25,12 +25,13 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( 'https://us.gcr.io', 'gcr:CREDENTIALS_ID' ) {
-            dockerImage.push()
+          // push docker image with latest and version
+        docker.withRegistry("https://${params.gcr.io/beaming-force-358817/gke-gcr}", 'CREDENTIALS_ID') {
+        dockerImage.push()
+             }
           }
         }
       }
-    }
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
