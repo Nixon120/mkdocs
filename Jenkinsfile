@@ -1,10 +1,5 @@
 pipeline {
-  environment {
-    PROJECT_ID = 'beaming-force-358817'
-    LOCATION = 'us-central1'
-    registry = "nixon/mkdocs"
-    CREDENTIALS_ID = 'gke'
-    dockerImage = ''
+
   }
   agent any
   stages {
