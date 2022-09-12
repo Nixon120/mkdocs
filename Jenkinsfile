@@ -3,7 +3,7 @@ pipeline {
     PROJECT_ID = 'beaming-force-358817'
     LOCATION = 'us-central1'
     registry = "nixon/mkdocs"
-    registryCredential = 'gke'
+    CREDENTIALS_ID = 'gke'
     dockerImage = ''
   }
   agent any
@@ -24,7 +24,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
+          docker.withRegistry( '', CREDENTIALS_ID ) {
             dockerImage.push()
           }
         }
