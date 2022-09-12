@@ -3,7 +3,7 @@ pipeline {
     PROJECT_ID = 'beaming-force-358817'
     LOCATION = 'us-central1'
     registry = "gcr.io/beaming-force-358817/gke-gcr"
-    CREDENTIALS_ID = 'dockerhub'
+    CREDENTIALS_ID = 'gke'
     dockerImage = ''
   }
   agent any
@@ -25,7 +25,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( 'https://us.gcr.io', CREDENTIALS_ID ) {
+          docker.withRegistry( 'https://us.gcr.io', ''gcr:CREDENTIALS_ID' ) {
             dockerImage.push()
           }
         }
